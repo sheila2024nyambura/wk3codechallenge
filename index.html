@@ -29,10 +29,10 @@
     </div>
     <script>
 
-let movies;
+        let movies;
         let availableTickets;
 
-        
+
         function updateTicketAvailability() {
             const availableTicketsElement = document.getElementById("available-tickets");
             availableTicketsElement.textContent = `Available Tickets: ${availableTickets}`;
@@ -40,6 +40,18 @@ let movies;
                 document.getElementById("buy-ticket").disabled = true; 
             }
         }
+
+        fetch('db.json')
+            .then(response => response.json())
+            .then(data => {
+                movies = data.films;
+
+                const filmsList = document.getElementById("films");
+
+                const placeholderLi = filmsList.querySelector(".placeholder");
+                if (placeholderLi) {
+                    filmsList.removeChild(placeholderLi);
+                }
     </script>
     
 </body>
