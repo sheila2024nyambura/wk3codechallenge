@@ -66,6 +66,36 @@
                     
                       availableTickets = movie.capacity - movie.tickets_sold;
                       updateTicketAvailability();
+                         
+                      const posterElement = document.getElementById("movie-poster");
+                        const titleElement = document.getElementById("movie-title");
+                        const runtimeElement = document.getElementById("movie-runtime");
+                        const showtimeElement = document.getElementById("movie-showtime");
+                        const descriptionElement = document.getElementById("movie-description");
+
+                        posterElement.src = movie.poster;
+                        titleElement.textContent = movie.title;
+                        runtimeElement.textContent = `${movie.runtime} minutes`;
+                        showtimeElement.textContent = `Showtime: ${movie.showtime}`;
+                        descriptionElement.textContent = movie.description;
+                    });
+
+                    
+                    filmsList.appendChild(filmItem);
+                });
+            })
+            .catch(error => {
+                console.error("Error fetching movie data: " + error);
+            });
+
+        
+        document.getElementById("buy-ticket").addEventListener("click", function () {
+            if (availableTickets > 0) {
+                availableTickets--; 
+                updateTicketAvailability();
+               
+            }
+        });
     </script>
     
 </body>
