@@ -25,9 +25,22 @@
             <p id="available-tickets"></p>
             <p id="movie-description"></p>
             <button id="buy-ticket">Buy Ticket</button>
-        </div>
-        
+        </div> 
     </div>
+    <script>
+
+let movies;
+        let availableTickets;
+
+        
+        function updateTicketAvailability() {
+            const availableTicketsElement = document.getElementById("available-tickets");
+            availableTicketsElement.textContent = `Available Tickets: ${availableTickets}`;
+            if (availableTickets === 0) {
+                document.getElementById("buy-ticket").disabled = true; 
+            }
+        }
+    </script>
     
 </body>
 </html>
