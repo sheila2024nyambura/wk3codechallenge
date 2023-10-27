@@ -52,6 +52,20 @@
                 if (placeholderLi) {
                     filmsList.removeChild(placeholderLi);
                 }
+
+                movies.forEach(movie => {
+                  
+                  const filmItem = document.createElement("li");
+                  filmItem.classList.add("film", "item"); 
+
+                 
+                  filmItem.textContent = movie.title;
+
+                 
+                  filmItem.addEventListener("click", function () {
+                    
+                      availableTickets = movie.capacity - movie.tickets_sold;
+                      updateTicketAvailability();
     </script>
     
 </body>
