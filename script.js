@@ -12,3 +12,10 @@ fetch('db.json')
       listItem.textContent = title;
       movieList.appendChild(listItem);
     });
+
+    // Append the list to the document
+    document.body.appendChild(movieList);
+  })
+  .catch((error) => {
+    console.error('Error fetching data:', error);
+  });
