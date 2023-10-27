@@ -1,0 +1,28 @@
+
+body {
+    background-color: black;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px;
+    padding: 5px;
+}
+
+.left-sidebar {
+    background-color: beige;
+    padding: 5px;
+}
+
+.movie-details {
+    background-color: beige;
+    padding: 10px;
+}
+
+.film.item {
+    cursor: pointer;
+    list-style: none;
+    padding: 5px;
+    margin: 5px;
+}

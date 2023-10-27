@@ -1,19 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Theatre</title>
+    <title>Movie Theater</title>
     <link rel="stylesheet" type="text/css" href="styles.css">
-
-
+        
+    
 </head>
 <body>
     <div class="container">
         <div class="left-sidebar">
             <h3>Movie Menu</h3>
             <ul id="films">
-
+                
             </ul>
         </div>
         <div class="movie-details">
@@ -25,14 +23,15 @@
             <p id="available-tickets"></p>
             <p id="movie-description"></p>
             <button id="buy-ticket">Buy Ticket</button>
-        </div> 
+        </div>
     </div>
-    <script>
 
+    <script>
+        
         let movies;
         let availableTickets;
 
-
+        
         function updateTicketAvailability() {
             const availableTicketsElement = document.getElementById("available-tickets");
             availableTicketsElement.textContent = `Available Tickets: ${availableTickets}`;
@@ -41,13 +40,16 @@
             }
         }
 
+     
         fetch('db.json')
             .then(response => response.json())
             .then(data => {
                 movies = data.films;
 
+               
                 const filmsList = document.getElementById("films");
 
+               
                 const placeholderLi = filmsList.querySelector(".placeholder");
                 if (placeholderLi) {
                     filmsList.removeChild(placeholderLi);
@@ -55,19 +57,20 @@
 
                 movies.forEach(movie => {
                   
-                  const filmItem = document.createElement("li");
-                  filmItem.classList.add("film", "item"); 
+                    const filmItem = document.createElement("li");
+                    filmItem.classList.add("film", "item"); 
 
-                 
-                  filmItem.textContent = movie.title;
+                   
+                    filmItem.textContent = movie.title;
 
-                 
-                  filmItem.addEventListener("click", function () {
-                    
-                      availableTickets = movie.capacity - movie.tickets_sold;
-                      updateTicketAvailability();
-                         
-                      const posterElement = document.getElementById("movie-poster");
+                   
+                    filmItem.addEventListener("click", function () {
+                      
+                        availableTickets = movie.capacity - movie.tickets_sold;
+                        updateTicketAvailability();
+
+                        
+                        const posterElement = document.getElementById("movie-poster");
                         const titleElement = document.getElementById("movie-title");
                         const runtimeElement = document.getElementById("movie-runtime");
                         const showtimeElement = document.getElementById("movie-showtime");
@@ -97,6 +100,5 @@
             }
         });
     </script>
-    
 </body>
 </html>
